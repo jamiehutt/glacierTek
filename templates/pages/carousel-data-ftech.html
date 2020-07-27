@@ -1,0 +1,134 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="robots" content="noindex" />
+        <title>Carousel Data</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        html,body{
+            height:100%;
+        }
+        body{
+            width:80%;
+            margin:auto;
+            font-family:sans-serif;
+        }
+        textarea{
+            outline:none;
+                font-family: monospace;
+    font-size: 1em;
+    background-color: #022804;
+    border: none;
+    width:100%;
+    padding: 24px;
+    color: #c6f4c8;
+    display: block;
+    height:80%;
+        }
+        ::selection {
+    background: #BBE27D;
+    /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: #BBE27D;
+    /* Gecko Browsers */
+}
+        </style>
+    </head>
+    <body>
+        <h1>Carousel content</h1>
+        <p>Copy this markup to /templates/components/carousel-content.html</p>
+        <p>You may edit this content via <a target="_new" href="https://docs.google.com/spreadsheets/d/1QMf2vlsAPgZ_qa6A5EHrJ8qxiK4_TTv3P3xijTJrIB4">this Google Sheet</a></p>
+        <textarea class="carousel-data"></textarea>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>
+
+        // ID of the Google Spreadsheet
+var spreadsheetID = "1QMf2vlsAPgZ_qa6A5EHrJ8qxiK4_TTv3P3xijTJrIB4";
+var url = "https://spreadsheets.google.com/feeds/list/" + spreadsheetID + "/1/public/values?alt=json";
+$.getJSON(url, function(data) {
+    var entry = data.feed.entry;
+    var i=0;
+    var photoCount = 0;
+    var itemCount = 0;
+    var imgCount = 0;
+    var productComparePath = '';
+    var rotateScript = '';
+    var apost = "'";
+    $(entry).each(function(){
+        productComparePath += '/' + this.gsx$productid.$t;
+    });
+
+    $(entry).each(function(){ // rotating script
+        if(this.gsx$howmanyphotosforthisproduct.$t > 1){
+            if(itemCount + 1 == 1){
+                rotateScript += "\n&lt;script&gt;\n";                   
+            }
+            for (imgCount = 0; imgCount < this.gsx$howmanyphotosforthisproduct.$t; imgCount++) {
+                if(imgCount + 1 == 1){
+                    rotateScript += "\t$('.carousel-360.img" + (itemCount+1) + "').click(function(e){\n\t\te.preventDefault();\n";
+
+                    // build the script for each collection of images
+
+                    if(this.gsx$howmanyphotosforthisproduct.$t == 2){
+                        rotateScript += "\t\tif($('#img" + (itemCount + 1) + "_1').hasClass('visible')) {\n\t\t\t$('#img" + (itemCount + 1) + "_2').addClass('visible');\n\t\t\t$('#img" + (itemCount + 1) + "_1').removeClass('visible');\n\t\t}\n\t\telse if($('#img" + (itemCount + 1) + "_2').hasClass('visible')) {\n\t\t\t$('#img" + (itemCount + 1) + "_1').addClass('visible');\n\t\t\t$('#img" + (itemCount + 1) + "_2').removeClass('visible');\n\t\t}\n\t});\n";
+                    }
+                    else if(this.gsx$howmanyphotosforthisproduct.$t == 3){
+                        rotateScript += "\t\tif($('#img" + (itemCount + 1) + "_1').hasClass('visible')) {\n\t\t\t$('#img" + (itemCount + 1) + "_2').addClass('visible');\n\t\t\t$('#img" + (itemCount + 1) + "_1,#img" + (itemCount + 1) + "_3').removeClass('visible');\n\t\t}\n\t\telse if($('#img" + (itemCount + 1) + "_2').hasClass('visible')) {\n\t\t\t$('#img" + (itemCount + 1) + "_3').addClass('visible');\n\t\t\t$('#img" + (itemCount + 1) + "_2,#img" + (itemCount + 1) + "_1').removeClass('visible');\n\t\t}\n\t\telse if($('#img" + (itemCount + 1) + "_3').hasClass('visible')) {\n\t\t\t$('#img" + (itemCount + 1) + "_1').addClass('visible');\n\t\t\t$('#img" + (itemCount + 1) + "_2,#img" + (itemCount + 1) + "_3').removeClass('visible');\n\t\t}\n\t});\n";
+                    }
+                }  
+            }
+        }
+        itemCount++;
+        if(itemCount == entry.length){
+            rotateScript += "&lt;/script&gt;";                   
+        }
+    });
+
+
+    $(entry).each(function(){
+        var photos = '';
+        var hasViews = '';
+        for (photoCount = 0; photoCount < this.gsx$howmanyphotosforthisproduct.$t; photoCount++) {
+            if(photoCount == 0){
+                var classname = 'visible';
+            }
+            else{
+                var classname = '';
+            }
+            photos += '\n\t\t\t\t&lt;img id="img' + (i+1) + '_' + (photoCount + 1) + '" class="' + classname + '" src="http://store.coolvest.com/content/img/carousel/product/' + (i+1) + '/' + (i+1) + '-' + (photoCount + 1) + '.png"&gt;';
+        }
+
+        if(i + 1 < entry.length){
+            var slideTrailer = '&lt;/div&gt;\n&lt;/div&gt;';
+        }
+        else{
+            var slideTrailer = '&lt;/div&gt;\n\t&lt;script src="https://code.jquery.com/jquery-1.12.0.min.js"&gt;&lt;/script&gt;' + rotateScript + '\n&lt;/div&gt;';
+        }
+
+        if(this.gsx$howmanyphotosforthisproduct.$t > 1){
+            var hasViews = '&lt;a title="See other views" class="tooltip carousel-360 img' + (i+1) + '" href=""&gt;&lt;span class="tooltiptext"&gt;Other views&lt;/span&gt;';
+        }
+
+        if(i>0){
+            $('.carousel-data').append('\n\n');
+        }
+        $('.carousel-data').append('&lt;div id="product' + this.gsx$productid.$t + '" class="heroCarousel-slide"&gt;\n\t&lt;div class="heroCarousel-content"&gt;\n\t\t&lt;div class="product-img"&gt;\n\t\t\t&lt;a href="' + this.gsx$link.$t + '">' + photos + '\n\t\t\t&lt;/a&gt;\n\t\t\t&lt;div class="img-controls"&gt;\n\t\t\t\t&lt;a title="Compare featured vests" class="carousel-compare tooltip" href="/compare' + productComparePath + '"&gt;&lt;span class="tooltiptext"&gt;Compare vests&lt;/span&gt;&lt;/a&gt;\n\t\t\t\t' + hasViews + '&lt;/a&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\t\t&lt;div class="hero-description"&gt;\n\t\t\t&lt;a href="' + this.gsx$link.$t + '"&gt;\n\t\t\t\t&lt;h1 class="heroCarousel-title">' + this.gsx$slidetitle.$t + '&lt;/h1&gt;\n\t\t\t\t&lt;p class="heroCarousel-description">\n\t\t' + this.gsx$slidetext.$t + '\n\t\t\t\t&lt;/p&gt;\n\t\t\t\t&lt;span class="heroCarousel-action button button--primary button--large">Shop Now&lt;/span&gt;\n\t\t\t&lt;/a&gt;\n\t\t&lt;/div&gt;\n\t' + slideTrailer).select();
+        
+        i++;
+
+    });
+});
+
+
+        </script>
+    </body>
+</html>

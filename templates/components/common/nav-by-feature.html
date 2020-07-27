@@ -1,0 +1,30 @@
+<ul>
+{{#each categories}}
+    {{#if name '===' 'Flame Retardant'}}
+        <li class="flame-link"><a href="{{url}}">{{name}}</a></li>
+    {{/if}}
+{{/each}}
+{{#each categories}}
+    {{#if name '===' 'High Visibility'}}
+        <li class="viz-link"><a href="{{url}}">{{name}}</a></li>
+    {{/if}}
+{{/each}}
+{{#each categories}}
+    {{#if name '===' 'Reflective'}}
+        <li class="reflect-link"><a href="{{url}}">{{name}}</a></li>
+    {{/if}}
+{{/each}}
+{{#each categories}}
+    {{#if name '===' 'Disposable'}}
+        <li class="disposeable-link"><a href="{{url}}">{{name}}</a></li>
+    {{/if}}
+{{/each}}
+{{#each categories}}
+    {{#if name '===' 'Concealable'}}
+        <li class="concealable-link"><a href="{{url}}">{{name}}</a></li>
+    {{/if}}
+{{/each}}
+</ul>
+       
+  
+

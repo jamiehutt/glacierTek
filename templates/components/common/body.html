@@ -1,0 +1,39 @@
+<div class="body">
+
+    {{#block "hero"}} {{/block}}
+
+    <div class="container">
+
+		<!-- Page type is: {{page_type}} -->
+
+		{{#if page_type '===' 'xxx'}}
+		
+		{{else}}
+			{{> components/common/nav-left-sidebar}}
+		{{/if}}
+
+		<div class="main-content">
+			{{#block "page"}}{{/block}}
+			
+			{{#if page_type '===' 'login'}}
+			{{else if page_type '===' 'product'}}
+			{{else if page_type '===' 'page'}}
+			{{else if page_type '===' 'category'}}
+			{{else if page_type '===' 'compare'}}
+			{{else if page_type '===' 'page_contact_form'}}
+			{{else if page_type '===' 'createaccount'}}
+			{{else if page_type '===' 'cart'}}
+			{{else if page_type '===' 'search'}}
+			{{else if page_type '===' '404'}}
+			{{else if page_type '===' 'account_orderstatus'}}
+			{{else if page_type '===' 'account_order'}}
+
+
+			
+			{{else}}
+				{{> components/common/testimonial-sidebar}}
+			{{/if}}
+		</div>
+    </div>
+    {{> components/common/modal}}
+</div>

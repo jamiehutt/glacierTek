@@ -1,0 +1,16 @@
+{{#partial "head"}}
+<link href="http://cdn3.bigcommerce.com/r-b894c2cb799bac74ce4990fade5989902a6e1a9d/themes/__master/Styles/prelaunch.css" type="text/css" rel="stylesheet" />
+    <!-- <link href="{{cdn '/assets/css/maintenance.css'}}" rel="stylesheet"> -->
+{{/partial}}
+
+{{#partial "page"}}
+    <main>
+        <header>
+            <h1>{{lang 'maintenance.down'}}</h1>
+        </header>
+        <section><p>{{{settings.maintenance.message}}}</p></section>
+        <section></section>
+        <footer><small></small></footer>
+    </main>
+{{/partial}}
+{{> layout/empty}}

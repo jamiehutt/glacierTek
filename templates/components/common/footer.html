@@ -1,0 +1,169 @@
+{{#if banners.bottom}}
+<div class="banners" data-banner-location="bottom">
+    <div class="banner">
+        {{{limit banners.bottom 1}}}
+    </div>
+</div>
+{{/if}}
+
+{{#if page_type '===' 'default'}}
+
+<div class="footer-promo-bar">
+    <div class="container">
+        <div class="promo-box promo-about-us">
+            <a href="/about-glacier-tek">
+                <h4>About us</h4>
+                <div class="promo-img" style="background-image:url({{cdn 'assets/img/promo-about-us.jpg'}});"></div>
+                <p>Learn about the company  and the science behind  phase change materials.</p>
+            </a>
+        </div>
+        <div class="promo-box promo-faqs">
+            <a href="/frequently-asked-questions-about-glacier-tek-cooling-vests">
+                <h4>FAQs</h4>
+                <div class="promo-img" style="background-image:url({{cdn 'assets/img/promo-faqs.jpg'}});"></div>
+                <p>Have question about our cooling vests? It’s probably  covered in our FAQs.</p>
+            </a>
+        </div>
+        <div class="promo-box promo-contact-us">
+            <a href="/contact-us">
+                <h4>Contact us</h4>
+                <div class="promo-img" style="background-image:url({{cdn 'assets/img/promo-contact-us.jpg'}});"></div>
+                <p>We're happy to answer questions or help you with returns.</p>
+            </a>
+        </div>
+        <div class="promo-box promo-compare-us">
+            <a href="/compare-vests">
+                <h4>Compare vests</h4>
+                <div class="promo-img" style="background-image:url({{cdn 'assets/img/promo-compare.jpg'}});"></div>
+                <p>Compare different cooling vests with one tool to find just the right one.</p>
+            </a>
+        </div>
+        <div class="promo-box promo-testimonials">
+            <a href="/glacier-tek-stories">
+                <h4>Testimonials</h4>
+                <div class="promo-img" style="background-image:url({{cdn 'assets/img/promo-testimonials.jpg'}});"></div>
+                <p>Read some of the feedback  we receive from our  customers.</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+{{/if}}
+
+
+<footer class="footer" role="contentinfo">
+    <div class="footer-content">
+        <ul>
+            <li><a href="/">VEST STORE</a></li>
+            <li><a href="/all-products/?sort=newest">All Products</a></li>
+            <li><a href="/sports/">Sports</a></li>
+            <li><a href="/health-care/">Health Care</a></li>
+            <li><a href="/law-enforcement/">Law Enforcement</a></li>
+            <li><a href="/work/">Work</a></li>
+            <li><a href="/mascots-characters/">Mascots / Characters</a></li>
+            <li><a href="/for-children/">For Children</a></li>
+            <li><a href="/for-dogs/">For Dogs</a></li>
+        </ul>
+        <ul class="links-wide">
+        <li>HELPFUL LINKS</li>
+            <li><a href="/glacier-tek-faqs/">FAQs</a></li>
+            <li><a href="/glacier-tek-stories/">Product Testimonials</a></li>
+            <li><a href="/about-glacier-tek/">About Glacier Tek</a></li>
+            <li><a href="/about-our-cooling-technology/">Our Cooling Technology</a></li>
+        </ul>
+        <ul class="links-wide links-col-2">
+            <li>&nbsp;</li>
+            <li><a href="/glacier-tek-shipping-policy/">Shipping Policy</a></li>
+            <li><a href="/glacier-tek-return-policy/">Return Policy</a></li>
+            <li><a href="/glacier-tek-privacy-policy/ ">Privacy Policy</a></li>
+            <li><a href="/glacier-tek-website-terms-and-conditions/">Copyright Notice</a></li>
+        </ul>
+
+        <ul class="links-narrow">
+        <li>HELPFUL LINKS</li>
+            <li><a href="/glacier-tek-faqs/">FAQs</a></li>
+            <li><a href="/glacier-tek-stories/">Product Testimonials</a></li>
+            <li><a href="/about-glacier-tek/">About Glacier Tek</a></li>
+            <li><a href="/about-our-cooling-technology/">Our Cooling Technology</a></li>
+
+
+            <li><a href="/glacier-tek-shipping-policy/">Shipping Policy</a></li>
+            <li><a href="/glacier-tek-return-policy/">Return Policy</a></li>
+            <li><a href="/glacier-tek-privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/glacier-tek-website-terms-and-conditions/">Copyright Notice</a></li>
+
+
+
+        </ul>
+
+        <ul>
+            <li>Account</li>
+            <li>
+                <a
+                    class=""
+                    href="{{urls.cart}}">
+                    <span>My {{lang 'common.cart'}}</span>
+                    <span class="countPill{{#if cart.items}} countPill--positive{{/if}} cart-quantity">{{cart.quantity}}</span>
+                </a>
+            </li>
+            {{#if customer}}
+                <li>
+                    <a href="{{urls.account.index}}">{{lang 'common.account'}}</a>
+                </li>
+                <li>
+                    <a href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
+                </li>
+            {{else}}
+                <li>
+                     <a href="{{urls.auth.login}}">{{lang 'common.login'}}</a>
+                </li>
+                {{#if settings.account_creation_enabled}}
+                    <li>
+                        <a href="{{urls.auth.create_account}}">{{lang 'common.sign_up'}}</a>
+                    </li>
+                {{/if}}
+            {{/if}}
+        </ul>
+        <ul class="address">
+            <li>Contact Us</li>
+            <li>4232 Park Glen Road<br />
+            Minneapolis, MN<br />
+            55416<br />
+            USA</li>
+            <li> <span class="phone-label">Phone:</span>800-482-0533<br />
+            <span class="phone-label"></span>321-752-4130</li>
+            <li><span class="phone-label">Fax:</span>952-944-6893</li>
+            <li><a href="/contact-us/">Email Us</a></li><!-- 
+            <li class="icn-share facebook"><a target="_new" href="https://www.facebook.com/pages/Glacier-Tek/165528996807428"></a></li>
+            <li class="icn-share twitter"><a target="_new" href="https://twitter.com/GlacierTek"></a></li> -->
+        <ul>
+    </div>
+    <script>
+        // drop-down menu
+        $( '.nav-by-style' ).click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $('.nav-by-feature').removeClass('open');
+            $('.nav-by-use').removeClass('open');
+            $('.nav-by-style').toggleClass('open');
+        });
+        $( '.nav-by-use' ).click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $('.nav-by-style').removeClass('open');
+        });
+        $( '.nav-by-feature' ).click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $('.nav-by-style').removeClass('open');
+        });
+        $('.has-dropdown li').click(function(e){
+            e.stopPropagation();
+        });
+        $(document).click(function() {
+            $('.nav-by-use,.nav-by-feature').removeClass('open');
+        });
+    </script>
+</footer>

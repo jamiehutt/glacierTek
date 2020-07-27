@@ -1,0 +1,14 @@
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<main class="page">
+    <h1 class="page-heading">{{ page.title }}</h1>
+    <div class="page-content page-content--centered">
+        {{{page.content}}}
+    </div>
+</main>
+
+{{/partial}}
+
+{{> layout/base}}

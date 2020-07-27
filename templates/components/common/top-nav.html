@@ -1,0 +1,213 @@
+<header class="top-nav desktop" role="banner">
+<style>
+    header .nav-column ul li.nav-by-use li.recreation-link {
+        border-bottom:none;
+        padding-bottom:6px;
+    }
+    header .nav-column ul li.nav-by-use li.recreation-link:hover {
+        background-color:#fff;
+    }
+    header .nav-column ul li.nav-by-use li.sports-link,
+    header .nav-column ul li.nav-by-use li.classic-link,
+    header .nav-column ul li.nav-by-use li.flex-link,
+    header .nav-column ul li.nav-by-use li.banox-link{
+        border-top:none;
+        padding: 3px 0px 3px 15px;
+        
+    }
+    header .nav-column ul li.nav-by-use li.banox-link{
+        border-top:none;
+        padding-bottom: 12px;
+        
+    }
+    header .nav-column ul li.nav-by-use li.sports-link,
+    header .nav-column ul li.nav-by-use li.classic-link,
+    header .nav-column ul li.nav-by-use li.flex-link{}
+    header .nav-column ul li.nav-by-use ul li a span.bullet {
+        position:relative !important;
+        top:-1px;
+        left:auto;
+        background-image:none;
+        right:auto;
+        font-size:8px;
+        padding-right:6px;
+    }
+</style>
+    <div class="small-3 headerLogo columns nav-column"><a href="/">GlacierTek</a></div>
+    <div class="small-9 columns nav-column">
+        <div class="search-pane closed">
+            <span class="close"></span>
+            <form action="/search.php">
+                <input type="text" name="search_query" autocomplete="off" autofocus data-search-quick="" data-error-message="Search field cannot be empty." value="" class="search-input" placeholder="Search the Glacier Tek store">
+                <input type="submit" value="search" class="button button--small button--primary">
+            </form>
+        </div>
+        <ul class="top-row">
+            <li><a href="/about-glacier-tek/">About Glacier Tek</a></li>
+            <li><a href="/about-our-cooling-technology/">Our Technology</a></li>
+            <li><a href="/faqs/">FAQs</a></li>
+            <li><a href="/contact-us/">Contact us</a></li>
+            <li class="navUser-item navUser-item--cart">
+                <a
+                    class="navUser-action"
+                    data-cart-preview
+                    data-dropdown="cart-preview-dropdown"
+                    data-options="align:right"
+                    href="{{urls.cart}}">
+                    <span class="navUser-item-cartLabel">My {{lang 'common.cart'}}</span>
+                    <span class="countPill{{#if cart.items}} countPill--positive{{/if}} cart-quantity">{{cart.quantity}}</span>
+                </a>
+                <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+            </li>
+            <li class="wide navUser-item navUser-item--account">
+                {{#if customer}}
+                    <a class="navUser-action" href="{{urls.account.index}}">{{lang 'common.account'}}</a>
+                    <a class="navUser-action" href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
+                {{else}}
+                    <a class="navUser-action" href="{{urls.auth.login}}">{{lang 'common.login'}}</a>
+                    {{#if settings.account_creation_enabled}}
+                        <span class="navUser-or">{{lang 'common.or'}}</span> <a class="navUser-action" href="{{urls.auth.create_account}}">{{lang 'common.sign_up'}}</a>
+                    {{/if}}
+                {{/if}}
+            </li>
+        </ul>
+        <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" tabindex="-1" data-prevent-quick-search-close>
+            {{> components/common/quick-search}}
+        </div>
+        <ul class="bottom-row">
+<li class="nav-by-style has-dropdown"><a href="">Shop by style<span></span></a>
+	<ul>
+		<li><a href="https://glaciertek.com/sports-cooling-vests/">Sports</a></li>
+		<li><a href="https://glaciertek.com/banox/">Banox</a></li>
+		<li><a href="https://glaciertek.com/flexvest/">Flex</a></li>
+		<li><a href="https://glaciertek.com/original-cooling-vest/">Original</a></li>
+		<li><a href="https://glaciertek.com/classic-cooling-vest/">Classic</a></li>
+		<li><a href="https://glaciertek.com/concealable-cooling-vest/">Concealable</a></li>
+		<li><a href="https://glaciertek.com/disposable/">Disposable</a></li>
+		<li><a href="https://glaciertek.com/childrens-cooling-vest/">For Children</a></li>
+		<li><a href="https://glaciertek.com/for-dogs/">For Dogs</a></li>
+	</ul>
+</li>
+
+<li class="nav-by-use has-dropdown"><a href="">Shop by use<span></span></a>
+    {{> components/common/nav-by-use}}
+</li>
+            <li style="" class="nav-by-feature has-dropdown"><a href="">Shop by feature<span></span></a>{{> components/common/nav-by-feature}}</li>
+            <li><a href="/spare-cooling-packs/">Accessories</a></li>
+            <li><a href="#" class="search">Search</a></li>
+            <li class="narrow navUser-item navUser-item--account">
+                {{#if customer}}
+                    <a class="navUser-action" href="{{urls.account.index}}">{{lang 'common.account'}}</a>
+                    <a class="navUser-action" href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
+                {{else}}
+                    <a class="navUser-action" href="{{urls.auth.login}}">{{lang 'common.login'}}</a>
+                    {{#if settings.account_creation_enabled}}
+                        <span class="navUser-or">{{lang 'common.or'}}</span> <a class="navUser-action" href="{{urls.auth.create_account}}">{{lang 'common.sign_up'}}</a>
+                    {{/if}}
+                {{/if}}
+            </li>
+        </ul>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+<!-- mobile header -->
+
+<header class="header top-nav mobile" role="banner">
+    <div class="small-3 columns nav-column" style="margin-right:0;">
+        <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu" aria-controls="menu" aria-expanded="false" style="text-align:center;">
+            <span class="mobileMenu-toggleIcon">Toggle menu</span>
+        </a>
+    </div>
+
+    <div class="small-6 headerLogo columns nav-column">
+        <a href="http://store.coolvest.com/">
+        <span class="header-logo-text">GlacierTek</span>
+        </a>
+    </div>
+
+    <div class="small-3 columns nav-column">
+        <ul class="navUser-section navUser-section--alt">
+           <li class="navUser-item navUser-item--cart">
+                <a
+                    class="navUser-action"
+                    data-cart-preview
+                    data-dropdown="cart-preview-dropdown"
+                    data-options="align:right"
+                    href="/cart.php">
+                    <span class="navUser-item-cartLabel"><span>My {{lang 'common.cart'}}</span></span>
+                    <span class="countPill{{#if cart.items}} countPill--positive{{/if}} cart-quantity">{{cart.quantity}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="navPages-container" id="menu" data-menu="" aria-hidden="true">
+        <nav class="navPages">
+    <div class="navPages-quickSearch">
+        <div class="container">
+    <!-- snippet location forms_search -->
+    <form class="form" action="/search.php">
+        <fieldset class="form-fieldset">
+            <div class="form-field">
+                <label class="is-srOnly" for="search_query">Search</label>
+                <input class="form-input" data-search-quick="" name="search_query" id="search_query" data-error-message="Search field cannot be empty." placeholder="Search the store" autocomplete="off">
+            </div>
+        </fieldset>
+    </form>
+    <section class="quickSearchResults" data-bind="html: results"></section>
+</div>
+    </div>
+ <ul class="navPages-list">   
+    <li class="navPages-list-title">Shop by style</li>
+	<ul>
+		<li><a href="https://glaciertek.com/sports-cooling-vests/">Sports</a></li>
+		<li><a href="https://glaciertek.com/banox/">Banox</a></li>
+		<li><a href="https://glaciertek.com/flexvest/">Flex</a></li>
+		<li><a href="https://glaciertek.com/original-cooling-vest/">Original</a></li>
+		<li><a href="https://glaciertek.com/classic-cooling-vest/">Classic</a></li>
+		<li><a href="https://glaciertek.com/concealable-cooling-vest/">Concealable</a></li>
+		<li><a href="https://glaciertek.com/disposable/">Disposable</a></li>
+		<li><a href="https://glaciertek.com/childrens-cooling-vest/">For Children</a></li>
+		<li><a href="https://glaciertek.com/for-dogs/">For Dogs</a></li>
+	</ul>
+</ul>
+    <ul class="navPages-list">
+        <li class="navPages-list-title">Shop by use</li>
+        {{> components/common/nav-by-use}}
+    </ul>
+    <ul class="navPages-list">
+        <li class="navPages-list-title">Shop by features</li>
+        {{> components/common/nav-by-feature}}
+    </ul>
+    <ul class="navPages-list"><a href="/spare-cooling-packs/">Shop for accessories</a></ul>
+
+    <ul class="navPages-list">
+        <li><a href="/about-glacier-tek/">About Glacier Tek</a></li>
+        <li><a href="/about-our-cooling-technology/">Our Technology</a></li>
+        <li><a href="/faqs/">FAQs</a></li>
+        <li><a href="/contact-us/">Contact us</a></li>
+    </ul>
+    <ul class="navPages-list navPages-list--user">
+    <li class="navPages-item">
+        {{#if customer}}
+            <a class="navUser-action" href="{{urls.account.index}}">{{lang 'common.account'}}</a>
+            <a class="navUser-action" href="{{urls.auth.logout}}">{{lang 'common.logout'}}</a>
+        {{else}}
+            <a class="navUser-action" href="{{urls.auth.login}}">{{lang 'common.login'}}</a>
+            {{#if settings.account_creation_enabled}}
+                <span class="navUser-or">{{lang 'common.or'}}</span> <a class="navUser-action" href="{{urls.auth.create_account}}">{{lang 'common.sign_up'}}</a>
+            {{/if}}
+        {{/if}}
+    </li>
+    </ul>
+</nav>
+    </div>
+
+</header>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        {{{stylesheet '/assets/css/theme.css'}}}
+        
+        {{ getFontsCollection }}
+        <script src="{{cdn '/assets/modernizr-custom.js'}}"></script>
+        {{{head.scripts}}}
+        {{{head.rsslinks}}}
+
+        {{inject 'themeSettings' theme_settings}}
+        {{inject 'genericError' (lang 'common.generic_error')}}
+        {{inject 'maintenanceMode' settings.maintenance}}
+        {{inject 'urls' urls}}
+        {{{snippet 'htmlhead'}}}
+    </head>
+
+        {{#if category.id '===' 51}}
+            <body class="compare-vests {{page_type}}-page ">
+        {{else if page_type '===' "category"}}
+            <body class="{{page_type}}-page category{{category.id}}">
+        {{else}}
+            <body class="{{page_type}}-page ">
+        {{/if}}
+
+        {{> components/common/top-nav}}
+        <div class="page-body">
+        <div class="icons-svg-sprite">{{> components/common/icons/icon-defs }}</div>
+
+        {{#if settings.privacy_cookie}}
+            {{> components/common/cookie}}
+        {{/if}}
+
+        {{> components/common/header }}
+        {{> components/common/body }}
+        
+        <script src="{{cdn '/assets/js/bundle.js'}}"></script>
+        <script>
+            // Exported in app.js
+            window.stencilBootstrap("{{template_file}}", {{jsContext}}).load();
+        </script>
+
+        {{{footer.scripts}}}
+        {{{snippet 'footer'}}}
+        </div> 
+        {{> components/common/footer }}
+    </body>
+</html>

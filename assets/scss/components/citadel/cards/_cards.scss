@@ -1,0 +1,241 @@
+// =============================================================================
+// CARDS (CSS)
+// =============================================================================
+//
+// 1. Allow users to click the anchor tag on the image in the figcaption empty
+//    space. This provides a much larger and simpler hit state for navigating
+//    to the product details page. (Does not work in IE10 or earlier).
+// 2. Using translate3d to counter a chrome specific bug: When using a masonry
+//    styled layout via CSS column-count etc, transforms applied to descendants
+//    are made invisible, except for 3d transforms...
+//
+// -----------------------------------------------------------------------------
+
+
+.card-figure {
+    margin-top: $card-figure-marginTop;
+
+    &:hover {
+
+        // scss-lint:disable NestingDepth
+        .card-figcaption {
+            opacity: 1;
+        }
+    }
+}
+
+.card-figcaption {
+    display: none;
+    margin: $card-figcaption-margin;
+    pointer-events: none; // 1
+
+    @include breakpoint("medium") {
+        display: block;
+    }
+}
+
+.card-figcaption-body {
+    display: $card-figcaption-body-display;
+    pointer-events: all; // 1
+    transform: translate3d(0, -50%, 0); // 2
+}
+
+.card-image {
+    border: 0;
+    display: flex;
+    margin: auto;
+    width: auto;
+}
+
+.card-title {
+    font-size: $card-title-fontSize;
+    margin: $card-title-margin;
+
+    > a {
+        color: $card-title-color;
+        text-decoration: $card-title-textDecoration;
+
+        // scss-lint:disable NestingDepth
+        &:hover {
+            color: $card-title-color-hover;
+        }
+    }
+}
+
+.card-text {
+    margin-bottom: $card-text-marginBottom;
+
+    abbr {
+        border: 0;
+        color: inherit;
+        font-size: inherit;
+    }
+}
+
+.card-figcaption-button {
+    border: $card-figcaption-button-border;
+    display: $card-figcaption-button-display;
+    margin: $card-figcaption-button-margin;
+
+    &:active {
+        background-color: $card-figcaption-button-backgroundHover;
+        border: $card-figcaption-button-border;
+    }
+
+    + .card-figcaption-button {
+        margin: $card-figcaption-button-margin;
+    }
+}
+
+.card-body {
+    text-align: center;
+    position:relative;
+    @include breakpoint("small") {
+        text-align: left;
+    }
+}
+
+
+//
+// Alternate card
+//
+// Purpose: Used to give the card alternative styling
+// -----------------------------------------------------------------------------
+
+.card--alternate {
+    border: 3px solid stencilColor("card--alternate-borderColor");
+    transition: all 0.15s ease;
+
+    .card-body {
+        background-color: stencilColor("card--alternate-backgroundColor");
+        padding: spacing("half");
+        transition: all 0.15s ease;
+
+        @include breakpoint("small") {
+            padding: spacing("single");
+        }
+    }
+
+    &:hover {
+        border-color: stencilColor("color-primary");
+
+        // scss-lint:disable SelectorDepth, NestingDepth
+        .card-body {
+            background-color: stencilColor("color-primary");
+
+            .card-text {
+                color: stencilColor("card--alternate-color--hover");
+            }
+        }
+
+        .card-title > a {
+            color: stencilColor("card--alternate-color--hover");
+        }
+    }
+}
+
+.attribute-icon{
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+}
+.attribute-icon.adjustable{
+    background-image:url(../icons/icn-adjustable.png);
+    background-image:url(../icons/icn-adjustable.svg);
+    background-size:60%;
+}
+.attribute-icon.disposable{
+    background-image:url(../icons/icn-disposable.png);
+    background-image:url(../icons/icn-disposable.svg);
+    background-size:50%;
+}
+.attribute-icon.flame-retardant{
+    background-image:url(../icons/icn-flame-retardant.png);
+    background-image:url(../icons/icn-flame-retardant.svg);
+    background-size:90%;
+}
+.attribute-icon.hand-washable{
+    background-image:url(../icons/icn-handwash.png);
+    background-image:url(../icons/icn-handwash.svg);
+    background-size:70%;
+}
+.attribute-icon.high-visibility{
+    background-image:url(../icons/icn-visibility.png);
+    background-image:url(../icons/icn-visibility.svg);
+    background-size:80%;
+}
+.attribute-icon.machine-washable{
+    background-image:url(../icons/icn-machine-wash.png);
+    background-image:url(../icons/icn-machine-wash.svg);
+    background-size:90%;
+}
+.attribute-icon.gray{
+    background-color:#ccc;
+}
+.attribute-icon.yellow{
+    background-color:#f8de00;
+}
+.attribute-icon.black{
+    background-color:#000;
+}
+.attribute-icon.blue{
+    background-color:#313f98;
+}
+.attribute-icon.tan{
+    background-color:#bdad93;
+}
+.attribute-icon.white{
+    background-color:#fff;
+    border:solid 1px #ccc;
+}
+.attribute-icon.pink{
+    background-color:pink;
+}
+.attribute-icon.orange{
+    background-color:orange;
+}
+.attribute-icon.red{
+    background-color:red;
+}
+.attribute-icon.green{
+    background-color:#2fbb5d;
+}
+.attribute-icon.desert{
+    background-color:#a18e6c;
+    background-image:url(../icons/icn-desert-camo.png);
+    background-size:cover;
+    background-position:50% 50%;
+}
+.card-text .attribute-bar{border:none;padding: 0;position: absolute;bottom: 12px;margin: 0;padding: 0;width: 100%;left: 0;.attribute-icon{width:30px;height:30px;}}
+.slick-track .attribute-icon{display:none;}
+.compare-page .attribute-icon{width:24px;height:24px;margin-bottom:6px;}
+.tooltip{
+    position:relative;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    font-size:12px;
+    line-height:100%;
+    width: auto;
+    font-family:fontFamily("sans");
+    text-transform: uppercase;
+    background-color:$color-GlacierTekBlue;
+    color: #fff;
+    text-align: center;
+    padding: 3px 6px;
+    white-space: nowrap;
+    border-radius:5px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,130%);
+}
+.tooltip:hover .tooltiptext {
+    visibility:visible;
+    cursor:default;
+}
+.img-controls .tooltip .tooltiptext{
+    top:-150%;
+}

@@ -1,0 +1,309 @@
+// =============================================================================
+// BODY (CSS)
+//
+// 1. Header is fixed on small screens, use the content body to create the whitespace
+//    between it and the header on all situations. If you change the spacing here,
+//    please update .heroCarousel too.
+//
+// =============================================================================
+// temporary
+.default-page .productCarousel {
+    display: none;
+}
+.productCarousel {
+    width: 90%;
+}
+.default-page h2.page-heading {
+    display: none;
+}
+// end temporary
+.footer-promo-bar:before {
+    content: "";
+    display: table;
+    clear: both;
+}
+.default-page h2:first-child {
+    display: none;
+}
+p {
+    font-family: fontFamily("serif");
+}
+.login-page {
+    .page-body {
+        min-height: 70vh;
+    }
+}
+.promo-box h4 {
+    font-family: fontFamily("sans");
+    font-size: 1rem;
+    margin-top: 0;
+}
+#sidebar_testimonial {
+    margin-bottom: 36px;
+}
+.body {
+    figure.half-right {
+        width: 40%;
+        float: right;
+        margin: 0 0 0 2rem;
+    }
+    .testimonial-item:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .summary {
+        font-size: 1.35rem;
+        line-height: 1.9rem;
+        font-weight: 100;
+    }
+    .notes {
+        font-family: fontFamily("sans");
+        font-size: 1rem;
+    }
+    // testimonials
+    .testimonyName {
+        margin-bottom: spacing("single") / 20;
+    }
+    #testimonials div:last-child {
+        margin-bottom: spacing("single") * 2;
+    }
+    h3 {
+        font-family: fontFamily("sans");
+        font-size: 1.25rem;
+    }
+    margin-bottom: spacing("double") * 2;
+    margin-top: spacing("single"); // 1
+    @include breakpoint("medium") {
+        margin-top: spacing("single") + spacing("base"); // 1
+    }
+    .main.full {
+        width: 74%;
+        float: left;
+    }
+    .main-content {
+        // background: pink;
+        width: 83%;
+        float: right;
+        margin-bottom: 48px;
+    }
+    nav.left-nav {
+        font-size: .95rem;
+        text-transform: uppercase;
+        letter-spacing: -.25px;
+        ul {
+            list-style: none;
+            margin: 0;
+            li {
+                margin: 0 0 9px 0;
+            }
+            li:last-child {
+                margin-bottom: spacing("double");
+            }
+        }
+        h4 {
+            font-family: fontFamily("sans");
+            font-size: .95rem;
+            margin-top: 0;
+            margin-bottom: spacing("base");
+            color: $color-textBase;
+        }
+        width:14%;
+        float:left;
+        margin-right:3%;
+        a {
+            text-decoration: none;
+            color: $color-textBase;
+            &:hover {
+                color: color("link", "hover");
+            }
+            &:active {
+                color: color("link", "active");
+            }
+        }
+    }
+    .right-column {
+        width: 20%;
+        margin-left: 6%;
+        float: right;
+    }
+}
+.page-body {
+    // min-height: 100vh;
+    clear: both;
+}
+.page {
+    @include grid-row( $behavior: nest);
+}
+.page-content,
+.page-content--full {
+    @include grid-column(12);
+}
+.page-content--centered {
+    @include breakpoint("medium") {
+        @include grid-column( $columns: 8, $center: true);
+    }
+}
+.page-content--textCenter {
+    text-align: center;
+}
+.page-sidebar {
+    @include grid-column(12);
+    position: relative;
+    @include breakpoint("medium") {
+        @include grid-column(3);
+        + .page-content {
+            @include grid-column(12);
+        }
+    }
+}
+@media only screen and (min-width: 945px) {
+    .page-body {
+        padding-top: 109px;
+    }
+}
+@media only screen and (max-width: 944px) and (min-width: 768px) {
+    .page-body {
+        padding-top: 0;
+    }
+}
+@media only screen and (max-width: 414px) {
+    .left-nav,
+    .footer-promo-bar {
+        display: none;
+    }
+    .right-column {
+        display: none;
+    }
+    .body {
+        .main.full {
+            width: 100%;
+        }
+        .main-content {
+            width: 100%;
+            float: none;
+            margin-bottom: 18px;
+        }
+    }
+    .videoWrapper {
+        padding-bottom: 51%;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .body .main-content{width:80%;}
+}
+@media only screen and (max-width: 900px) {
+    .body .main-content{width:78%;}
+}
+@media only screen and (max-width: 801px) {
+    .body .main-content{width:76%;}
+    .body .right-column {
+    width: 100%;
+    margin-left: 0;
+    float: none;
+    display:block;
+    clear:both;
+}
+.body .main.full {
+    width: 100%;
+    float: none;
+}
+.related-products{
+    display:none !important;
+}
+}
+@media only screen and (max-width: 768px) {
+    .body .main-content{width:100%;}
+    .left-nav{display:none;}
+}
+
+
+
+#accordion {
+    margin-top: 10px;
+    border: 1px solid #cecece;
+    border-top: none;
+    border-bottom: none;
+    a.title {
+        display: block;
+        background: #f4f4f4;
+        background-image: -webkit-linear-gradient(white, #ededed);
+        background-image: -moz-linear-gradient(white, #ededed);
+        background-image: -o-linear-gradient(white, #ededed);
+        background-image: -ms-linear-gradient(white, #ededed);
+        background-image: linear-gradient(white, #ededed);
+        padding-left: 15px;
+        height: 40px;
+        line-height: 40px;
+        text-decoration: none;
+        border-bottom: thin solid #cecece;
+        font-family: Arial;
+        font-size: 13px;
+        font-weight: bold;
+        text-shadow: 0px 1px 1px white;
+    }
+}
+#accordion div {
+    background: white;
+    height: auto;
+    display: none;
+    border-bottom: thin solid #cecece;
+    padding: 15px;
+    padding-top: 24px;
+}
+.first {
+    border-top: 1px solid #cecece;
+}
+body.compare-vests {
+    .card-figcaption {
+        opacity: 1;
+    }
+}
+.videoWrapper {
+    position: relative;
+    padding-bottom: 54%;
+    padding-top: 25px;
+    height: 0;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.productGrid .product {
+    float: left !important;
+}
+
+@mixin left-nav-state {
+    // write the css here
+    a{
+        font-weight:bold;
+        color:$color-GlacierTekBlue;
+        cursor:default;
+    }
+    a:hover{
+        color:$color-GlacierTekBlue;
+    }
+}
+
+.category40 .left-nav .law-link,
+.category39 .left-nav .sports-link,
+.category38 .left-nav .healthcare-link,
+.category49 .left-nav .work-link,
+.category41 .left-nav .mascot-link,
+.category42 .left-nav .children-link,
+.category43 .left-nav .dog-link,
+.category44 .left-nav .viz-link,
+.category45 .left-nav .reflect-link,
+.category46 .left-nav .nuclear-link,
+.category47 .left-nav .disposeable-link,
+.category48 .left-nav .concealable-link,
+.category13 .left-nav .spare-packs,
+.category52 .left-nav .extenders
+{
+    @include left-nav-state;
+}
+.toggle{border-top:none;}

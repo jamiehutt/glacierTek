@@ -1,0 +1,73 @@
+// =============================================================================
+// SIDEBAR BLOCKS (CSS)
+// =============================================================================
+
+
+// Block
+// -----------------------------------------------------------------------------
+
+.sidebarBlock {
+
+    + .sidebarBlock {
+        border-top: container("border");
+        margin-top: spacing("single") + spacing("third");
+        padding-top: spacing("single") + spacing("third");
+    }
+}
+
+.sidebarBlock-heading {
+    margin-top: 0;
+    text-transform: inherit;
+}
+
+#sidebar_testimonial{
+	.testimonyName{
+		margin-bottom:6px;
+	}
+	.testimonial-item{
+		margin-bottom:36px;
+	}
+	.text{
+
+    font-size: 1.1em;
+    line-height: 1.55em;
+    font-weight: 100;
+
+	}
+	.icn-testimonial{
+		width:50px;
+		height:50px;
+		display:block;
+		margin:0 auto 24px auto;
+		background-image: url('../icons/quote-mark.png');
+    	background-image: url('../icons/quote-mark.svg');
+	}
+	h3,h4{
+		font-family: fontFamily("sans");
+		font-size:1em;
+		text-transform:uppercase;
+				a{
+			text-decoration:none;
+		}
+	}
+	h3{
+		
+		
+		
+		margin-top:0;
+		padding-top:0;
+
+	}
+	h3{
+		font-family: fontFamily("sans");
+		font-size:1em;
+		text-transform:uppercase;
+		margin-top:0;
+		padding-top:0;
+		a{
+			text-decoration:none;
+		}
+	}
+
+
+}

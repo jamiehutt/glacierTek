@@ -1,0 +1,5 @@
+$fonts: $fontFamily-sans $fontFamily-serif $fontFamily-mono $fontFamily-headings $fontFamily-hero;
+
+@if contains($fonts, "'Roboto Slab', serif") {
+    @import "roboto_slab";
+}

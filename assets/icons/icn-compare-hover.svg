@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Compare</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="37" height="37" rx="18.5"></rect>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Compare" transform="translate(2.000000, 1.000000)">
+            <g id="Rectangle-6">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <polygon id="Fill-1" fill="#9FB5D8" points="8.13178681 17.3960941 2.88574219 17.3960941 2.88574219 20.2743294 8.13178681 20.2743294 8.13178681 25.6688588 17.7355231 18.8331529 8.13178681 12.0019765"></polygon>
+            <polygon id="Fill-2" fill="#9FB5D8" points="28.6295835 11.9999588 19.0217813 18.8352529 28.6295835 25.6705471 28.6295835 20.2764294 34.0766602 20.2764294 34.0766602 17.3940765 28.6295835 17.3940765"></polygon>
+        </g>
+    </g>
+</svg>

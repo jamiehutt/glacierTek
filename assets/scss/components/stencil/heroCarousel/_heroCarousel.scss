@@ -1,0 +1,329 @@
+// HERO CAROUSEL
+// -----------------------------------------------------------------------------
+//
+// Purpose: Styles the hero carousel component, which basically adds extras to the
+// vendor slick carousel, to specifically display hero images.
+//
+// 1. Hide the actual image element to allow background-size: cover treatment on
+//    large screens to scale image. Use visibility because the JS uses the height
+//    to set the slide size.
+//
+// 2. With JS on, minimise the jump in content as you progressively enhance the
+//    slider. Slowly fade and slide the height, instead of a jump in collapsing
+//    hidden content.
+//
+// 3. Visually overrides the top margin for '.body' defined in _body.scss.
+//    The '.body' top margin creates space between the header and page content.
+//    However, on the homepage, we want the carousel to be flush with the header.
+//
+// 4. Allows image to scale on large screens while preventing the top and bottom
+//    from becoming cut off.
+// -----------------------------------------------------------------------------
+.heroCarousel {
+    h1 {
+        line-height: 120%;
+    }
+    margin-bottom: spacing("double");
+    margin-top: -(spacing("single")); // 3
+    background-image:url('../img/carousel/carousel_background.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:50% 0;
+    height:remCalc(500);
+    overflow:hidden;
+    .product-img img {
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        transition: opacity 700ms ease-out 250ms;
+    }
+    .product-img img.visible {
+        opacity: 1;
+        transition: opacity 700ms ease-in 250ms;
+    }
+    .heroCarousel-image-shim {
+        display: none;
+    }
+    margin-top: -(spacing("single") + spacing("base")); // 3
+    .js & {
+        // 2
+        max-height: remCalc(0);
+        opacity: 0;
+        overflow: hidden;
+        transition: all 600ms ease-out;
+    }
+    &.slick-initialized {
+        // 2
+        max-height: remCalc(1500);
+        opacity: 1;
+    }
+    .slick-next,
+    .slick-prev {
+        top: 50%;
+    }
+    .slick-next {
+        right: 15px;
+        @include breakpoint("medium") {
+            right: 25px;
+        }
+    }
+    .slick-prev {
+        left: 15px;
+        @include breakpoint("medium") {
+            left: 25px;
+        }
+    }
+    .slick-dots {
+        bottom: spacing("third");
+        opacity: .5;
+        @include breakpoint("medium") {
+            bottom: 0;
+            height: 1px;
+        }
+        // scss-lint:disable SelectorDepth, NestingDepth
+        li {
+            background-color: transparent;
+            top: -40px;
+        }
+    }
+}
+.heroCarousel-slide {
+    position: relative;
+    height: 500px;
+    a {
+        text-decoration: none;
+    }
+    .img-controls {
+        position: absolute;
+        bottom: 12px;
+        right: 18px;
+        width: 100%;
+        text-align: right;
+        z-index: 11000;
+    }
+    a.carousel-compare,
+    a.carousel-360 {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: 50% 50%;
+        margin-right: 6px;
+    }
+    a.carousel-compare {
+        background-image: url('../icons/icn-compare.png');
+        background-image: url('../icons/icn-compare.svg');
+    }
+    a.carousel-360 {
+        background-image: url('../icons/icn-360.png');
+        background-image: url('../icons/icn-360.svg');
+    }
+    a:hover.carousel-compare {
+        background-image: url('../icons/icn-compare-hover.png');
+        background-image: url('../icons/icn-compare-hover.svg');
+    }
+    a:hover.carousel-360 {
+        background-image: url('../icons/icn-360-hover.png');
+        background-image: url('../icons/icn-360-hover.svg');
+    }
+    .photo-container {
+        height: 350px;
+    }
+}
+.heroCarousel-slide--stretch {
+    @include breakpoint("large") {
+        // 4
+        background-size: 100% 100%;
+    }
+}
+.heroCarousel-image {
+    @include breakpoint("medium") {
+        // 1
+        visibility: hidden;
+    }
+}
+.heroCarousel-content {
+    background-color: rgba($carousel-bgColor, 1);
+    text-align: center;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+    .hero-description {
+        position: absolute;
+        right: 604px;
+        background-color: rgba(255, 255, 255, .5);
+        width: 45%;
+        padding: 24px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+    }
+    .heroCarousel-title {
+        font-size: 24px;
+    }
+    .product-img {
+        float: right;
+        height: 500px;
+        width: 847px;
+        position: relative;
+        img {
+            max-height: 500px;
+        }
+        text-align:center;
+        position:relative;
+    }
+    background-color: rgba($carousel-bgColor,
+    .1);
+    left: 0;
+    margin: 0 auto;
+    // position: absolute;
+    right: 0;
+    // top: 50%;
+    // transform: translateY(-50%);
+    width: 100%;
+    &.heroCarousel-content--empty {
+        background-color: transparent;
+    }
+}
+.heroCarousel-title {
+    color: $carousel-title-color;
+    font-size: fontSize("small");
+    margin-top: 0;
+    @include breakpoint("medium") {
+        font-size: fontSize("hero");
+    }
+}
+.heroCarousel-description {
+    color: $carousel-description-color;
+    font-size: fontSize("tiny");
+    @include breakpoint("small") {
+        font-size: fontSize("smallest");
+    }
+    @include breakpoint("medium") {
+        font-size: fontSize("smaller");
+    }
+}
+.heroCarousel-action {
+    margin: 0;
+    @include breakpoint("medium") {
+        margin-top: spacing("single");
+    }
+}
+@media only screen and (max-width: 1300px) {
+    .heroCarousel-content .hero-description {
+        right: 45%;
+    }
+}
+@media only screen and (max-width: 944px) {
+    .heroCarousel-content .hero-description {
+        width: 38%;
+        right: 52%;
+    }
+    .heroCarousel-content .product-img img {
+        right: -100px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .heroCarousel h1.heroCarousel-title {
+        font-size: 18px;
+    }
+}
+@media only screen and (max-width: 414px) { // carousel for small phone
+    .heroCarousel {
+        height: 425px;
+        overflow: auto;
+        margin-top: - remCalc(21);
+        margin-bottom:remCalc(9);
+    }
+    .heroCarousel-content {
+        overflow: visible;
+        height: auto;
+        height: 448px;
+        padding-bottom: 140px;
+    }
+    .heroCarousel-content .product-img img {
+        right: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .heroCarousel-content .product-img {
+        float: right;
+        height: 100%;
+        width: 100%;
+    }
+    .heroCarousel-content .hero-description {
+        width: 100%;
+        background: #fff;
+        left: 0;
+        bottom: 0;
+        top: 360px;
+        height: 130px;
+        padding: 0;
+    }
+    .heroCarousel-description {
+        display: none;
+    }
+    h1.heroCarousel-title {
+        padding: 12px 12px 18px 12px;
+        margin: 0;
+    }
+    .heroCarousel .slick-dots {
+        bottom: 115px;
+        opacity: 1;
+    }
+    .heroCarousel-slide .img-controls {
+        top: 12px;
+        left: 12px;
+        text-align: left;
+    }
+    .heroCarousel .slick-next, .heroCarousel .slick-prev {
+        top: 60%;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 375px) { // carousel for small phone
+    .heroCarousel {
+        height: 395px;
+    }
+    .heroCarousel-content {
+        height: 408px;
+    }
+    .heroCarousel-content .hero-description {
+        top: 330px;
+    }
+    .heroCarousel .slick-dots {
+        bottom: 124px;
+        opacity: 1;
+    }
+    .heroCarousel{
+        margin-bottom:remCalc(9);
+    }
+    .heroCarousel .slick-next, .heroCarousel .slick-prev {
+        top: 54%;
+    }
+
+}
+
+@media only screen and (max-width: 320px) { // carousel for small phone
+    .heroCarousel {
+        height: 355px;
+    }
+    .heroCarousel-content {
+        height: 369px;
+    }
+    .heroCarousel-content .hero-description {
+        top: 290px;
+    }
+    .heroCarousel .slick-dots {
+        bottom: 100px;
+        opacity: 1;
+    }
+    .heroCarousel .slick-next, .heroCarousel .slick-prev {
+        top: 57%;
+    }
+
+}

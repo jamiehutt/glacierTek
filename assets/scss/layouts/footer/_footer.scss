@@ -1,0 +1,293 @@
+// =============================================================================
+// FOOTER (CSS)
+// =============================================================================
+// Layout and columns
+// -----------------------------------------------------------------------------
+//
+// 1. To enable the grid's display: inline-block; to work properly, we need to
+//    remove the white-space that it creates between columns with font-size: 0;
+// 2. Re-set the font-size that was reduced to 0 in point 1 for children.
+//
+// -----------------------------------------------------------------------------
+.footer {
+    background-color: $footer-background;
+    border-top: container("border");
+    padding: spacing("double") 0;
+    color: stencilColor("color-secondary");
+    float: left;
+    width: 100%;
+    ul {
+        display: inline-block;
+        width: 19.5%;
+        list-style-type: none;
+        margin: 0;
+        vertical-align: top;
+        li:first-child {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+        }
+        li {
+            margin: 0 0 9px 0;
+        }
+    }
+    .phone-label {
+        min-width: 50px;
+        display: inline-block;
+        padding-right: 6px;
+    }
+    a {
+        color: stencilColor("color-secondary");
+        text-decoration: none;
+        // scss-lint:disable NestingDepth
+        &:hover {
+            color: stencilColor("color-GlacierTekLightBlue");
+            text-decoration: underline;
+        }
+        // scss-lint:enable NestingDepth
+    }
+    .countPill {
+        background-color: $color-GlacierTekRed;
+        top: -0.14286rem;
+        position: relative;
+    }
+    .footer-content {
+        max-width: 970px;
+        margin: 0 auto;
+    }
+    .icn-share {
+        display: inline-block;
+        padding-right: remCalc(9px);
+        padding-top: remCalc(6px);
+        a {
+            background-color: $color-white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: block;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+        }
+    }
+    .icn-share.facebook a {
+        background-image: url('../icons/icn-social-facebookhover-50-50.png');
+        background-image: url('../icons/icn-social-facebookhover-50-50.svg');
+        background-size: 32px;
+    }
+    .icn-share.twitter a {
+        background-image: url('../icons/icn-social-twitterhover-50-50.png');
+        background-image: url('../icons/icn-social-twitterhover-50-50.svg');
+        background-size: 36px;
+    }
+    .icn-share.facebook a:hover,
+    .icn-share.twitter a:hover {
+        opacity: 0.75;
+    }
+}
+.footer-info {
+    @include grid-row($behavior: nest);
+    font-size: 0; // 1
+}
+.footer-info-col {
+    @include grid-column(12);
+    color: stencilColor("color-textSecondary");
+    display: inline-block;
+    float: none;
+    font-size: fontSize("base"); // 2
+    margin-bottom: spacing("double");
+    text-align: center;
+    vertical-align: top;
+    @include breakpoint("small") {
+        text-align: left;
+        width: width("6/12");
+    }
+    @include breakpoint("medium") {
+        width: width("4/12");
+    }
+    >:first-child {
+        margin-top: 0;
+    }
+    >:last-child {
+        margin-bottom: 0;
+    }
+}
+.footer-info-col--small {
+    @include breakpoint("medium") {
+        width: width("2/12");
+    }
+}
+.footer-info-col--social {
+    width: 100%;
+}
+.footer-info-col--left {
+    @include breakpoint("small") {
+        padding: 0;
+    }
+}
+.footer-info-col--right {
+    @include breakpoint("small") {
+        left: 50%;
+        position: inherit;
+    }
+    @include breakpoint("medium") {
+        left: 0;
+        padding: 0;
+        text-align: right;
+    }
+}
+// Content
+// -----------------------------------------------------------------------------
+.footer ul.links-narrow {
+    display: none;
+}
+.footer-info-heading {
+    color: $footer-heading-fontColor;
+    font-size: fontSize("base");
+    text-transform: inherit;
+}
+.footer-info-list {
+    list-style: none;
+    margin-left: 0;
+    a {
+        color: stencilColor("color-textSecondary");
+        text-decoration: none;
+        // scss-lint:disable NestingDepth
+        &:hover {
+            color: stencilColor("color-textSecondary--hover");
+        }
+        // scss-lint:enable NestingDepth
+    }
+}
+.footer-copyright {
+    text-align: center;
+    @include breakpoint("small") {
+        text-align: left;
+    }
+    > .powered-by {
+        color: stencilColor("color-textSecondary");
+        font-size: fontSize("tiny");
+        margin: 0;
+    }
+    a {
+        color: stencilColor("color-textSecondary");
+        text-decoration: none;
+        // scss-lint:disable NestingDepth
+        &:hover {
+            color: stencilColor("color-textSecondary--hover");
+        }
+        // scss-lint:enable NestingDepth
+    }
+}
+.footer-payment-icons {
+    height: remCalc(40);
+    margin-top: spacing("single");
+    @include breakpoint("medium") {
+        margin-top: spacing("double");
+    }
+    .footer-payment-icon {
+        height: 100%;
+        margin: spacing("quarter");
+        vertical-align: middle;
+        width: remCalc(50);
+    }
+    svg {
+        fill: stencilColor("icon-color");
+    }
+}
+.footer-geotrust-ssl-seal {
+    @include breakpoint("small") {
+        bottom: 0;
+        position: absolute;
+        right: 16px;
+    }
+    table {
+        margin: auto;
+    }
+}
+// footer promo bar
+.footer-promo-bar {
+    height: 60px;
+    clear: both;
+    margin-top: 36px;
+    padding-top: 36px;
+    padding-bottom: 48px;
+    border-top: solid 1px #96aacb;
+    margin-bottom: 36px;
+    height: 200px;
+    .container{
+        padding-bottom:36px;height:200px;
+    }
+
+}
+
+
+.promo-box{
+    width:18.2%;
+    float:left;
+    margin-right:2.25%;
+}
+.container .promo-box:last-child{
+    margin-right:0;
+}
+.promo-img{margin-bottom:9px;height:150px;background-repeat:no-repeat;background-size:cover;}
+.promo-box p{
+    margin-bottom:24px;
+}
+
+
+@media only screen and (max-width: 953px) {
+    .promo-img {
+        height:120px;
+    }
+}
+@media only screen and (max-width: 675px) {
+    .promo-img {
+        height:80px;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    .footer .footer-content {
+        max-width: 90%;
+    }
+}
+@media only screen and (max-width: 850px) {
+    .footer ul {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+    .footer ul li {
+        display: inline-block;
+        margin-right: 12px;
+        margin-bottom: 6px;
+    }
+    .footer ul li:first-child {
+        display: block;
+    }
+    .footer ul.links-wide {
+        display: none;
+    }
+    .footer ul.links-narrow {
+        display: block;
+    }
+    .footer ul.address {
+        padding: 0
+    }
+    .footer ul.address li {
+        display: block;
+    }
+    .footer ul.address li {
+        display: block;
+    }
+    .footer ul.address li.icn-share {
+        display: inline;
+        width: 40px;
+        float: left;
+    }
+}
+.footer-promo-bar{
+    a{
+        text-decoration:none;
+    }
+}
